@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Анкета</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="icon" href="Снимок экрана 2025-06-17 222152.png" type="image/png">
+
+</head>
+<body>
+  <header>
+    <h1>Заполните анкету и работайте у нас</h1>
+  </header>
+
+  <div class="container">
+    <form id="jobForm">
+      <label>Мужчина</label>
+      <input type="radio" name="gender" value="Мужчина" /><br /><br />
+      <label>Женщина</label>
+      <input type="radio" name="gender" value="Женщина" required /><br /><br />
+      <input type="text" name="firstName" placeholder="Имя" required /><br /><br />
+      <input type="text" name="lastName" placeholder="Фамилия" required /><br /><br />
+      <input type="text" name="birthPlace" placeholder="Место рождения" required /><br /><br />
+      <input type="date" name="birthDate" required /><br /><br />
+      <input type="text" name="prevJob" placeholder="Предыдущая работа" required /><br /><br />
+      <button id="submitBtn" class="my-button my-button-disabled" type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("jobForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("input", () => {
+      if (form.checkValidity()) {
+        submitBtn.classList.remove("my-button-disabled");
+      } else {
+        submitBtn.classList.add("my-button-disabled");
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        alert("Пожалуйста, заполните все поля!");
+      }
+    });
+  </script>
+</body>
+</html>
